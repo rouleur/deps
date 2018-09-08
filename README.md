@@ -8,9 +8,11 @@ Under cover It uses Maven's dependency plugin. But you don't need to write a pom
 
 **Usage** 
 
- $ deps `<groupId> <artifactId> <version>` 
- or for multiple libraries:
- $ deps `<groupId1> <artifactId1> <version1>...<groupIdN> <artifactIdN> <versionN>  ` 
+$ deps `<groupId> <artifactId> <version>` 
+
+or for multiple libraries:
+
+$ deps `<groupId1> <artifactId1> <version1>...<groupIdN> <artifactIdN> <versionN>  ` 
  
 **Example**
 
