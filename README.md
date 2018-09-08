@@ -19,24 +19,39 @@ $ deps `<groupId1> <artifactId1> <version1>...<groupIdN> <artifactIdN> <versionN
 `$./deps org.apache.zookeeper zookeeper 3.4.8 org.apache.kafka kafka-clients 0.10.1.1`
 
 `Gathering dependencies. This may take a while...`
+
 `SUCCESS: Dependency jars ready under deps_zookeeper-3.4.8_kafka-clients-0.10.1.1`
 
+
 `deps_zookeeper-3.4.8_kafka-clients-0.10.1.1` folder contains: 
+
 _jline-0.9.94.jar_
+
 _kafka-clients-0.10.1.1.jar_
+
 _log4j-1.2.16.jar_
- _lz4-1.3.0.jar_
+
+_lz4-1.3.0.jar_
+
 _netty-3.7.0.Final.jar_
+
 _slf4j-api-1.6.1.jar_
+
 _slf4j-log4j12-1.6.1.jar_
+
 _snappy-java-1.1.2.6.jar_
+
 _zookeeper-3.4.8.jar_
 
+
 **Dependencies**
+
 Bash, Maven
 
 **Installation**
+
 `curl -O https://raw.githubusercontent.com/rouleur/deps/master/deps`
+
 `chmod +x deps`
 
 
