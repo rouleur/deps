@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# Maven Dependency Gatherer
+# Prerequisites: bash, maven
+#
+
+type mvn > /dev/null 2>&1 || { echo "ERROR: Maven required. Could not find mvn in path."; exit 1; } 
+
+usage (){
+  echo "Usage  : deps <groupId1> <artifactId1> <version1> ... <groupIdN> <artifactIdN> <versionN>" >&2
+  echo "Example: deps org.apache.zookeeper zookeeper 3.4.8 org.apache.kafka kafka-clients 0.10.1.1" >&2
+  exit 1;
+}
+
+err(){
+  echo "ERROR: "$* >&2
+  exit 1
+}
+
+[ $# -ne 0 ] || usage
+[ $(($# % 3)) -eq 0 ] || usage
+
+g1=$1
+a1=$2
+v1=$3
+dirname="deps"
+pomxml="<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\"><modelVersion>4.0.0</modelVersion><groupId>"$g1"-deps</groupId><artifactId>"$a1"-deps</artifactId><version>0</version><dependencies>"
+
+until [ -z "$1" ]
+do
+  pomxml=$pomxml"<dependency><groupId>"$1"</groupId><artifactId>"$2"</artifactId><version>"$3"</version><scope>provided</scope></dependency>"
+  dirname=$dirname"_"$2"-"$3
+  shift 3
+done
+
+pomxml=$pomxml"</dependencies></project>"
+workdir=$PWD
+projdir=$dirname
+
+if [ -d $projdir ]; then
+  projdir=$dirname-$RANDOM
+fi
+
+mkdir $projdir
+echo $pomxml > $projdir/pom.xml
+cd $projdir
+outputdir=$workdir/$projdir
+echo "Gathering dependencies. This may take a while..."
+mvncmd=$(mvn dependency:copy-dependencies -DoutputDirectory="$outputdir")
+
+[ $? -eq 0 ] || err $mvncmd
+rm -f $outputdir/pom.xml 
+echo "SUCCESS: Dependency jars ready under $projdir"
+
