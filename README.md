@@ -6,7 +6,7 @@ Useful for when you need to manually copy dependencies of some library say to an
 
 Under cover It uses Maven's dependency plugin. But you don't need to write a pom.xml 
 
-##Usage 
+## Usage 
 
 $ deps `<groupId> <artifactId> <version>` 
 
@@ -14,7 +14,7 @@ or for multiple libraries:
 
 $ deps `<groupId1> <artifactId1> <version1>...<groupIdN> <artifactIdN> <versionN>  ` 
  
-##Example
+## Example
 
 `$./deps org.apache.zookeeper zookeeper 3.4.8 org.apache.kafka kafka-clients 0.10.1.1`
 
@@ -26,11 +26,11 @@ $ deps `<groupId1> <artifactId1> <version1>...<groupIdN> <artifactIdN> <versionN
 `deps_zookeeper-3.4.8_kafka-clients-0.10.1.1` folder contains: 
 _jline-0.9.94.jar, kafka-clients-0.10.1.1.jar, log4j-1.2.16.jar, lz4-1.3.0.jar, netty-3.7.0.Final.jar, slf4j-api-1.6.1.jar, slf4j-log4j12-1.6.1.jar, snappy-java-1.1.2.6.jar, zookeeper-3.4.8.jar_
 
-##Dependencies
+## Dependencies
 
 Bash, Maven
 
-##Installation
+## Installation
 
 `curl -O https://raw.githubusercontent.com/rouleur/deps/master/deps`
 
