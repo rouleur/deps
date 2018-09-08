@@ -7,11 +7,13 @@ Useful for when you need to manually copy dependencies of some library say to an
 Under cover It uses Maven's dependency plugin. But you don't need to write a pom.xml 
 
 **Usage** 
+
  $ deps `<groupId> <artifactId> <version>` 
  or for multiple libraries:
  $ deps `<groupId1> <artifactId1> <version1>...<groupIdN> <artifactIdN> <versionN>  ` 
  
 **Example**
+
 `$./deps org.apache.zookeeper zookeeper 3.4.8 org.apache.kafka kafka-clients 0.10.1.1`
 
 `Gathering dependencies. This may take a while...`
